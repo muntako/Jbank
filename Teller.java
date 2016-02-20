@@ -1,24 +1,24 @@
-package JBank;
+ 
 
 
 /**
- * Write a description of class Tes here.
+ * Write a description of class Teller here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Akhmad Muntako 
+ * @version 1.0
  */
-public class Tes
+public class Teller
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Tes
+     * Constructor for objects of class Teller
      */
-    public Tes()
+    public Teller()
     {
         // initialise instance variables
-        x = 0;
+  
     }
 
     /**
@@ -27,9 +27,9 @@ public class Tes
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+  public static void main(String[] args)
     {
-        // put your code here
-        return x + y;
+       // 
     }
 }
+

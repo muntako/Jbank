@@ -1,0 +1,43 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\Java\jdk1.8.0_73\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.8
+-classpath
+C:\Program Files (x86)\BlueJ\lib\bluejcore.jar;C:\Program Files (x86)\BlueJ\lib\junit-4.8.2.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-core.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-device.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-gpio-extension.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-service.jar;D:\UI\kuliah\semester 6\OOP\JBank
+-d
+D:\UI\kuliah\semester 6\OOP\JBank\doc
+-encoding
+windows-1252
+-charset
+windows-1252
+-docletpath
+C:\Program Files (x86)\BlueJ\lib\bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+D:\UI\kuliah\semester 6\OOP\JBank\Bank.java
+<---- end of javadoc command ---->
+Loading source file D:\UI\kuliah\semester 6\OOP\JBank\Bank.java...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_73
+Building tree for all the packages and classes...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\Bank.html...
+D:\UI\kuliah\semester 6\OOP\JBank\Bank.java:34: warning - @param argument "y" is not a parameter name.
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\package-frame.html...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\package-summary.html...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\allclasses-frame.html...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\allclasses-noframe.html...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\index.html...
+Generating D:\UI\kuliah\semester 6\OOP\JBank\doc\stylesheet.css...
+1 warning
