@@ -2,14 +2,14 @@
 
 
 /**
- * Write a description of class Account here.
+ * Account Class
  * 
  * @author Akhmad Muntako
  * @version 1.0
  */
 public class Account
 {
-    // instance variables - replace the example below with your own
+    // deklarasi variabel
     private char acctType;
     private double balance;
     private String id;
@@ -24,43 +24,55 @@ public class Account
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * method untuk membuat account
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @type 
+     * @amount
      */
    public Account(char type, double amount)
     {
         
     }
+    
     private void deposit(double amount)
     {
         
+       
     }
+    
     public char getAcctType()
     {
-        return '\0';
+        return acctType;
     }
-    private double getBalance()
+    
+    public double getBalance()
     {
-        return 0;
+         return balance;
     }
+    
     public String getId()
     {
-        return "";
+         return id;
     }
-    private void setBalance(double amount)
+    
+    public void setBalance(double amount)
     {
-        return;
+       this.balance = amount;
+       return;
     }
+    
     public void setID(String acctId)
     {
+        this.id = acctId;
         return;
     }
+    
     public void setAcctType()
     {
+        this.acctType = acctType;
         return;
     }
+    
     private void withdraw(double amount)
     {
         return;

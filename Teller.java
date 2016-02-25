@@ -1,35 +1,31 @@
- 
-
 
 /**
  * Write a description of class Teller here.
  * 
- * @author Akhmad Muntako 
- * @version 1.0
+ * @author Akhmad Muntako
+ *  1
  */
 public class Teller
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Teller
-     */
-    public Teller()
-    {
-        // initialise instance variables
-  
+    public Customer c1=new Customer();
+    public Account a1=new Account();
+    private Account akun1;
+    public String blabla;
+    public double saldo, balance;
+    
+    public static void main(String[] args){
+    
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-  public static void main(String[] args)
-    {
-       // 
+    
+    public Teller(){
+    c1.setName("Sanadhi","Sutandi");
+    blabla = c1.getName();
+    a1.setBalance (1000000);
+    c1.setAccount(a1);
+    akun1=c1.getAccount();
+    balance=akun1.getBalance();
+    System.out.println(balance);
+    System.out.println(blabla);
     }
 }
 

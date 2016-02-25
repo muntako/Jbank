@@ -1,4 +1,4 @@
- 
+
 
 
 /**
@@ -9,7 +9,7 @@
  */
 public class Bank
 {
-    // instance variables - replace the example below with your own
+    // dekralari variabel
     private static double creditInterestRate, investmentInterestRate, premiumInterestRate;
     private static int lastCustID, nextCustID;
     private static String closeTime, phone, startTime;
@@ -21,7 +21,7 @@ public class Bank
      */
     public static String getAdress()
     {
-        // initialise instance variables
+        
        return "";
     }
 

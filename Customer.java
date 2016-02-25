@@ -10,8 +10,16 @@
 public class Customer
 {
     // instance variables - replace the example below with your own
-    private String cityAddress, dateOfBirth, email, firstName, lastName, streetAddress, phoneNumber, zipOrPostalCode;
-    private int custId, numberOfCurrentAccounts;
+    private String cityAddress;
+    private String dateOfBirth;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String streetAddress;
+    private String phoneNumber;
+    private String zipOrPostalCode;
+    private int custId;
+    private int numberOfCurrentAccounts;
     private Account accounts = new Account ();
 
     /**
@@ -19,29 +27,32 @@ public class Customer
      */
     public Customer()
     {
-        // initialise instance variables
+        
        
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+      
      */
     public Customer(String fname, String lname, String dob)
     {
+        firstName = fname;
+        lastName = lname;
+        dateOfBirth = dob;
         
     }
     
     public Customer(String firstName, String lastName, String dateOfBirth, int custId)
     {
-        
+        firstName = firstName;
+        lastName = lastName;
+        dateOfBirth = dateOfBirth;
+        custId = custId;
     }
     
     private String getAddress()
     {
-        return "";
+        return streetAddress+","+cityAddress+","+zipOrPostalCode;
     }
     
     public Account getAccount()
@@ -51,17 +62,17 @@ public class Customer
     
     private int getCustomerId()
     {
-        return 0;
+        return custId;
     }
     
     private String getEmail()
     {
-        return "";
+        return email;
     }
     
-    private String getCustomerName()
+    public String getName()
     {
-        return "";
+        return lastName + "," + firstName;
     }
     
     public int getNumOfAccounts()
@@ -71,26 +82,38 @@ public class Customer
     
     private String getPhoneNumber()
     {
-        return "";
+        
+        return phoneNumber;
     }
     
     private void setAddress(String street, String city, String code)
     {
+        this.streetAddress = street;
+        this.cityAddress = city;
+        this.zipOrPostalCode = code;
         return;
     }
     
     private void setEmail(String emailAddress)
     {
+        this.email = emailAddress;
         return;
     }
     
-    private void setCustomerName(String lname, String fname)
+    public void setName(String lname, String fname)
     {
+        this.lastName = lname;
+        this.firstName = fname;
         return;
     }
     
     private void setPhoneNumber(String phoneNum)
     {
+        this.phoneNumber = phoneNum;
         return;
+    }
+    
+     public void setAccount(Account account){
+        accounts = account;
     }
 }
