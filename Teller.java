@@ -1,22 +1,29 @@
 
 /**
- * Write a description of class Teller here.
+ * Class that controlle the bank
  * 
  * @author Akhmad Muntako
- *  1
+ * @version 27/2/2016
  */
 public class Teller
 {
+    //declaration variable
     public Customer c1=new Customer();
     public Account a1=new Account();
     private Account akun1;
     public String blabla;
     public double saldo, balance;
     
+    /**
+     * 
+     */
     public static void main(String[] args){
     
     }
     
+    /**
+     * Construct the Teller object
+     */
     public Teller(){
     c1.setName("Sanadhi","Sutandi");
     blabla = c1.getName();
