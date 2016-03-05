@@ -83,7 +83,7 @@ public class Teller
            System.out.println("Telepon     = " + phoneNumber);
            System.out.println("Customer ID = " + custID + acctType);
            System.out.println("Balance     = " + balance);  
-           
+         
            System.out.println("\n\nApakah Anda ingin membuat akun nasabah?(y/n)");
            pilih = reader.next().trim().charAt(0); 
                    
