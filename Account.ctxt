@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Account()
-comment0.text=\r\n\ Constructs\ a\ bank\ account\ with\ a\ zero\ balance\r\n
+comment0.text=\r\n\ Constructs\ a\ bank\ account\ \r\n
 comment1.params=type\ amount
 comment1.target=Account(char,\ double)
 comment1.text=\r\n\ Construct\ a\ bank\ accout\ with\ a\ given\ account\ type\ and\ account\ amount\r\n\ \r\n\ @param\ type\ the\ acount\ type\ \r\n\ @param\ amount\ the\ amount\ account\r\n

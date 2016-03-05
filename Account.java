@@ -13,12 +13,12 @@ public class Account
     private String id;  //id akun
 
     /**
-     * Constructs a bank account with a zero balance
+     * Constructs a bank account 
      */
     public Account()
     {
-       balance = 0;
-       
+       acctType = 'S';
+       balance = 10.00;       
     }
 
     /**
@@ -29,7 +29,8 @@ public class Account
      */
    public Account(char type, double amount)
     {
-       
+       acctType = type;
+       balance = amount ;
     }
     
     /**
@@ -54,7 +55,7 @@ public class Account
      */
     public boolean withdraw(double amount)
     {
-        if (balance < 0){
+        if (balance - amount < 0){
             return false;}
         else {
             balance = balance - amount;

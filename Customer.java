@@ -11,14 +11,14 @@ public class Customer
 {
     // instance variables 
     private String cityAddress;
-    private String dateOfBirth;
+    private static String  dateOfBirth;
     private String email;
-    private String firstName;
-    private String lastName;
+    private static String firstName;
+    private static String lastName;
     private String streetAddress;
     private String phoneNumber;
     private String zipOrPostalCode;
-    private int custId;
+    private static int custId;
     private int numberOfCurrentAccounts;
     private Account accounts = new Account ();
     private static final String EMAIL_PATTERN = 
@@ -28,12 +28,14 @@ public class Customer
     /**
      * Constructor for objects of class Customer
      */
-    public Customer()
+    public Customer(String fname, String lname)
     {
+        this(fname,lname,"none");
         
-       
     }
 
+    public Customer(){}
+    
     /**
      *  Constructor for objects of class Customer
      *  @param fname customers firstname
@@ -42,9 +44,9 @@ public class Customer
      */
     public Customer(String fname, String lname, String dob)
     {
-        firstName = fname;
-        lastName = lname;
-        dateOfBirth = dob;
+        this.firstName = fname;
+        this.lastName = lname;
+        this.dateOfBirth = dob;
         
     }
     
@@ -60,7 +62,7 @@ public class Customer
         firstName = firstName;
         lastName = lastName;
         dateOfBirth = dateOfBirth;
-        custId = custId;
+        custId = Bank.getNextID();
     }
     
     /**
@@ -129,6 +131,13 @@ public class Customer
     }
     
     /**
+     * sets customer ID
+     
+    private void setCustId (int custID){
+        this.custId = custID ;       
+    }*/
+    
+    /**
      * Set customers address
      * @param street input customers street address
      * @param city input customers city address
@@ -169,7 +178,7 @@ public class Customer
      * set customers phone number
      * @param phoneNum input customers phone number
      */
-    private void setPhoneNumber(String phoneNum)
+    public void setPhoneNumber(String phoneNum)
     {
         phoneNumber = phoneNum;
     }

@@ -2,7 +2,7 @@
  * A class to control 
  * 
  * @author Akhmad Muntako
- * @version 27/2/2016
+ * @version 3/3/2016
  */
 public class Bank
 {
@@ -10,29 +10,35 @@ public class Bank
     private static double creditInterestRate;
     private static double investmentInterestRate;
     private static double premiumInterestRate;
-    private static int lastCustID = 1000;
-    private static int nextCustID = 1000;
+    private static int lastCustID ;
+    private static int nextCustID ;
     private static int numOfCurrentCustomer;
     private static int nextID ;
     private static String closeTime;
     private static String phone;
     private static String startTime;
     public static String website;
-    public static String bankName = "JBANK";
-    public static String bankAddress = "1234 JavaStreet, AnyCity, ThisState, 34567";
-    public static int maxNumOfCustomers = 20;
+    public static String BANK_NAME = "JBANK";
+    public static String BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
+    public static int maxNumOfCustomers = 20; 
     
-
+    
+    /**
+     * Construct bank object
+     */
+    public Bank (){
+        
+    }
+    
     /**
      * Constructor for objects of class Bank
-     * @return 
-     */
+     * @return bankAddress address bank
+     
     public static String getAdress()
     {
-        
-       return bankAddress;
+        return bankAddress;
     }
-
+    */
     /**
      * Gets current credits rate
      * @return 0
@@ -66,44 +72,70 @@ public class Bank
      */
     public static int getLastID()
     {
-        return 0;
+        if (lastCustID != 0){
+            if (nextCustID == 0){
+                return lastCustID;
+            }else {
+                lastCustID = nextCustID; 
+            }
+        }else {
+            lastCustID = 0;
+        }
+        return lastCustID;
     }
+   
     
     /**
      * Gets max customers
-     * @return 0
-     */
+     * @return maxNumOfCustomers maximal customer number
+     
     public static int getMaxCustomers()
     {
-        return 0;
+        return maxNumOfCustomers;
     }
+    */
+        
+    /**
+     * Get bank name
+     * 
+     * @return BANK_NAME bank name
+     
+    public static String getName()
+    {
+        return BANK_NAME;
+    }
+    */
     
     /**
      * Gets current customers number
-     * @return current customers number
+     * @return numOfCurrentCustomer current customers number
      */
-    public static int getNumOfCurrentCustomers(){
-        return numOfCurrentCustomer;
-    }
-    
-    /**
-     * Get customers name
-     * 
-     * @return ""
-     */
-    public static String getName()
-    {
-        return "";
+    public static int getNumOfCurrentCostumers(){
+       return numOfCurrentCustomer;
     }
     
     /**
      * Gets Customers next ID
-     * @return 0
+     * @return nextCustID
      */
     public static int getNextID()
     {
-        nextCustID = lastCustID + 1;
+        if (nextCustID == 0){
+            nextCustID = 1000 ; //1000 is first customers ID 
+            lastCustID = 1000 ;
+            numOfCurrentCustomer ++;                        
+        }
+        else if (numOfCurrentCustomer == maxNumOfCustomers)
+        {
+            nextCustID = 0;            
+        }
+        else {
+            lastCustID = nextCustID ; // 
+            nextCustID ++;
+            numOfCurrentCustomer++;            
+        }
         return nextCustID;
+        
     }
     
     /**
