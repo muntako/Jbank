@@ -1,3 +1,8 @@
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  * A class to control 
  * 
@@ -14,9 +19,9 @@ public class Bank
     private static int nextCustID ;
     private static int numOfCurrentCustomer;
     private static int nextID ;
-    private static String closeTime;
+    private static Date closeTime;
+    private static Date startTime;
     private static String phone;
-    private static String startTime;
     public static String website;
     public static String BANK_NAME = "JBANK";
     public static String BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
@@ -63,7 +68,16 @@ public class Bank
      */
     public static String getHoursOfOperation()
     {
-        return "";
+        SimpleDateFormat startclose = new SimpleDateFormat ("h:m a");
+        Calendar start = new GregorianCalendar();
+                start.set(Calendar.HOUR_OF_DAY,8);
+                start.set(Calendar.MINUTE, 0);
+                Date startTime = start.getTime();
+                Calendar close = new GregorianCalendar();
+                close.set(Calendar.HOUR_OF_DAY, 17);
+                close.set(Calendar.MINUTE, 0);
+                Date closeTime = close.getTime();
+        return startclose.format(startTime) + " to " + startclose.format(closeTime);        
     }
     
     /**
@@ -84,7 +98,13 @@ public class Bank
         return lastCustID;
     }
    
+    public static Date getStartTime (){
+        return startTime;
+    }
     
+    public static Date getCloseTime (){
+        return closeTime;
+    }
     /**
      * Gets max customers
      * @return maxNumOfCustomers maximal customer number
@@ -175,12 +195,26 @@ public class Bank
     }
     
     /**
+     * Sets Bank Start Time 
+     */
+    public static void setStartTime( int hour, int min){
+        startTime = new GregorianCalendar (0,0,0, hour , min).getTime();
+    }
+    
+    /**
+     * Sets Bank Close Time 
+     */
+    public static void setCloseTime( int hour, int min){
+        closeTime = new GregorianCalendar (0,0,0, hour , min).getTime();
+    }
+    
+    /**
      * set investment rate
      * @param rate input rate of investment
      */
     public static void setInvestmentRate(double rate)
     {
-        
+      
     }
     
     /**

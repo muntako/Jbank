@@ -109,7 +109,7 @@ public class Account
      */
     public void setID(String acctId)
     {
-        id = acctId;
+        id = Bank.getNextID() + acctId;
     }
     
     /**

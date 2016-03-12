@@ -2,8 +2,12 @@
  * A class to describe customers data
  * 
  * @author Akhmad Muntako  
- * @version 27/2/2016
+ * @version 10/3/2016
  */
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,10 +15,10 @@ public class Customer
 {
     // instance variables 
     private String cityAddress;
-    private static String  dateOfBirth;
+    private Date dateOfBirth;
     private String email;
-    private static String firstName;
-    private static String lastName;
+    public static String firstName;
+    public static String lastName;
     private String streetAddress;
     private String phoneNumber;
     private String zipOrPostalCode;
@@ -28,7 +32,7 @@ public class Customer
     /**
      * Constructor for objects of class Customer
      */
-    public Customer(String fname, String lname)
+    public Customer(String fname, String lname)throws Exception
     {
         this(fname,lname,"none");
         
@@ -40,13 +44,15 @@ public class Customer
      *  Constructor for objects of class Customer
      *  @param fname customers firstname
      *  @param lname customers lastname
-     *  @param dob customers date of birth
+     *  @param dob customers date of birth (Format dd-mm-yyyy)
      */
-    public Customer(String fname, String lname, String dob)
+    public Customer(String fname, String lname, String dob)throws Exception
     {
         this.firstName = fname;
         this.lastName = lname;
-        this.dateOfBirth = dob;
+        String date = dob;
+        DateFormat df =new SimpleDateFormat("dd-mm-yyyy");  //Date format
+        this.dateOfBirth = df.parse(date);//convert string DOB to Date     
         
     }
     
@@ -87,7 +93,7 @@ public class Customer
      * Gets customers ID
      * @return customers ID
      */
-    private int getCustomerId()
+    public int getCustomerId()
     {
         return custId;
     }
@@ -98,8 +104,14 @@ public class Customer
      */
     public String getEmail()
     {
-        
         return email;
+    }
+    
+    /**
+     * Gets customers dob
+     */
+    public Date getDob (){
+        return dateOfBirth;
     }
     
     /**
@@ -108,7 +120,7 @@ public class Customer
      */
     public String getName()
     {
-        return lastName + "," + firstName;
+        return lastName + " " + firstName;
     }
     
     /**
@@ -124,17 +136,20 @@ public class Customer
      * Gets customers phone number
      * @return phone number
      */
-    private String getPhoneNumber()
+    public String getPhoneNumber()
     {
         
         return phoneNumber;
     }
     
     /**
+     * 
      * sets customer ID
+     * 
      
-    private void setCustId (int custID){
-        this.custId = custID ;       
+     
+    public void setCustId (int custID){
+        custId = custID ;       
     }*/
     
     /**
