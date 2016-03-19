@@ -2,7 +2,7 @@
  * A class to describe customers data
  * 
  * @author Akhmad Muntako  
- * @version 10/3/2016
+ * @version 17/3/2016
  */
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -15,16 +15,17 @@ public class Customer
 {
     // instance variables 
     private String cityAddress;
-    private Date dateOfBirth;
+    public static Date dateOfBirth;
     private String email;
     public static String firstName;
     public static String lastName;
-    private String streetAddress;
-    private String phoneNumber;
+    public String streetAddress;
+    public static String phoneNumber;
     private String zipOrPostalCode;
-    private static int custId;
+    public static int custId;
     private int numberOfCurrentAccounts;
-    private Account accounts = new Account ();
+    private static int[] MAX_NUM_ODCUSTOMERS;
+    private Account[] accounts = new Account[4];
     private static final String EMAIL_PATTERN = 
         "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
  
@@ -51,7 +52,7 @@ public class Customer
         this.firstName = fname;
         this.lastName = lname;
         String date = dob;
-        DateFormat df =new SimpleDateFormat("dd-mm-yyyy");  //Date format
+        DateFormat df =new SimpleDateFormat("dd/mm/yyyy");  //Date format
         this.dateOfBirth = df.parse(date);//convert string DOB to Date     
         
     }
@@ -83,17 +84,17 @@ public class Customer
     /**
      * Gets the Account 
      * @return accounts 
-     */
+     
     public Account getAccount()
     {
-        return accounts;
-    }
+        return accounts[i];
+    }*/
     
     /**
      * Gets customers ID
      * @return customers ID
      */
-    public int getCustomerId()
+    public static int getCustomerId()
     {
         return custId;
     }
@@ -193,7 +194,7 @@ public class Customer
      * set customers phone number
      * @param phoneNum input customers phone number
      */
-    public void setPhoneNumber(String phoneNum)
+    public static void setPhoneNumber(String phoneNum)
     {
         phoneNumber = phoneNum;
     }
@@ -202,8 +203,28 @@ public class Customer
      * Set customers Account
      * @param account input customers account from class account
      */
-     public void setAccount(Account account){
-        accounts = account;
-    }
+     public boolean addAccount(double balance,char type){
+        boolean accountAdded=true;
+       if(numberOfCurrentAccounts>4){
+           accountAdded=false;
+        }
+        else{
+            int notUsed=-1;
+            for(int i = 0 ; i <accounts.length; i++){
+                    if(accounts[i]  == null && notUsed == -1){
+                        notUsed = i;
+                    }
+              else if(accounts[i].getId().endsWith(Character.toString(type))){
+                    accountAdded=false;
+                }
+            }
+            if(notUsed!=-1&&accountAdded){
+                accounts[notUsed]=new Account(this,balance,type);
+                accountAdded=true;
+                ++numberOfCurrentAccounts;
+            }
+        }
+        return accountAdded;
+        }
   
 }

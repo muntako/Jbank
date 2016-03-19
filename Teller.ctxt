@@ -1,9 +1,8 @@
 #BlueJ class context
 comment0.params=fname\ lname\ DOB
 comment0.target=Customer\ createNewCustomer(java.lang.String,\ java.lang.String,\ java.util.Date)
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment1.text=\r\n\ main\ \r\n
+comment1.params=
+comment1.target=java.lang.String\ getHoursOfOperation()
 comment2.params=
 comment2.target=Teller()
 comment2.text=\r\n\ Construct\ the\ Teller\ object\r\n

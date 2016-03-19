@@ -3,8 +3,10 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
+
 /**
- * A class to control 
+ * A class to control bank 
  * 
  * @author Akhmad Muntako
  * @version 3/3/2016
@@ -25,9 +27,15 @@ public class Bank
     public static String website;
     public static String BANK_NAME = "JBANK";
     public static String BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
-    public static int maxNumOfCustomers = 20; 
+    private static  int MAX_NUM_OF_CUSTOMERS; 
+    private static Customer[] customers = new Customer[MAX_NUM_OF_CUSTOMERS];
     
-    
+    static {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Masukkan jumlah maksimum Customers:");
+        int x = reader.nextInt();
+        MAX_NUM_OF_CUSTOMERS = x;
+    }
     /**
      * Construct bank object
      */
@@ -35,6 +43,35 @@ public class Bank
         
     }
     
+    public static boolean addCustomer (Customer customer){
+        for (int i = 0; i < customers.length; i++){
+            if(customers[i] == null){
+                customers[i] = customer;
+                return true;
+            }
+        }
+        return false;       
+    }
+    
+    /**
+     * gets Customer by customer ID
+     * @return customer
+     */
+    public static Customer getCustomer(int custID){
+         for (int i = 0; i < customers.length; i++){
+            if(customers[i].getCustomerId() == custID){
+                return customers[i];
+            }
+        }
+        return null;  
+    }
+    /**
+     * get maximum number of customers
+     * @return maximum number of customers
+     */
+    public static int getMaxNumOfCustomers(){
+        return MAX_NUM_OF_CUSTOMERS;
+    }
     /**
      * Constructor for objects of class Bank
      * @return bankAddress address bank
@@ -108,12 +145,12 @@ public class Bank
     /**
      * Gets max customers
      * @return maxNumOfCustomers maximal customer number
-     
+     */
     public static int getMaxCustomers()
     {
-        return maxNumOfCustomers;
+        return MAX_NUM_OF_CUSTOMERS;
     }
-    */
+    
         
     /**
      * Get bank name
@@ -145,7 +182,7 @@ public class Bank
             lastCustID = 1000 ;
             numOfCurrentCustomer ++;                        
         }
-        else if (numOfCurrentCustomer == maxNumOfCustomers)
+        else if (numOfCurrentCustomer == MAX_NUM_OF_CUSTOMERS)
         {
             nextCustID = 0;            
         }

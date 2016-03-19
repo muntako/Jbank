@@ -8,20 +8,12 @@
 public class Account
 {
     // deklarasi variabel
-    private char acctType; //tipe akun
-    private double balance; //
+    private static char acctType; //tipe akun
+    private static double balance; //
     private String id;  //id akun
+    Customer customer  = new Customer();
 
-    /**
-     * Constructs a bank account 
-     */
-    public Account()
-    {
-       acctType = 'S';
-       balance = 10.00;       
-    }
-
-    /**
+      /**
      * Construct a bank accout with a given account type and account amount
      * 
      * @param type the acount type 
@@ -32,6 +24,20 @@ public class Account
        acctType = type;
        balance = amount ;
     }
+    
+   /**
+     * Construct a bank accout with a given Customer,  account type and account amount
+     * 
+     * @param type the acount type 
+     * @param amount the amount account
+     */
+   public Account(Customer customer, double amount,char type)
+    {
+       customer = customer;
+       acctType = type;
+       balance = amount ;
+       String ID =  customer.getCustomerId() + ""+ type;
+    } 
     
     /**
      * Deposits money into the bank account
@@ -69,7 +75,7 @@ public class Account
      *  @return the account type
      */
     
-    public char getAcctType()
+    public static char getAcctType()
     {
         return acctType;
     }
@@ -78,7 +84,7 @@ public class Account
      * Gets the cuurent balance of theBank Account
      * @return the current balance
      */
-    public double getBalance()
+    public static double getBalance()
     {
          return balance;
     }
@@ -103,15 +109,7 @@ public class Account
         balance = amount;
     }
     
-    /**
-     * Set account ID
-     * @param acctId input account ID
-     */
-    public void setID(String acctId)
-    {
-        id = Bank.getNextID() + acctId;
-    }
-    
+        
     /**
      * 
      * Set account type
