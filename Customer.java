@@ -84,11 +84,42 @@ public class Customer
     /**
      * Gets the Account 
      * @return accounts 
-     
-    public Account getAccount()
-    {
-        return accounts[i];
-    }*/
+     */
+    public Account getAccount(char type){
+        for (int i= 0;i < accounts.length;i++){
+            Account a = accounts[i];
+            String ID = a.getId();
+            if(ID.lastIndexOf(type)!= -1){
+                return a;
+            }
+            else{
+                return null; 
+            } 
+        }
+        return null;
+    }
+    
+    public boolean removeAccount(char type){
+        boolean accountRemoved = false;
+        for (int i = 0; i<=3; i++) {
+            if ( accounts[i].getAcctType() == type) {
+                accounts[i] = null;
+                i--;
+                numberOfCurrentAccounts--;
+                accountRemoved = true;
+            }
+            
+            if (accounts[i] == null) {
+                if ( i != 3) {
+                   Account a = accounts[i];
+                    accounts[i] = accounts [i+1];
+                    accounts [i+1] = a;
+                }
+            }
+        }
+        return accountRemoved;
+    }
+    
     
     /**
      * Gets customers ID
