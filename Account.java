@@ -40,8 +40,6 @@ public abstract class Account {
 //     } 
 
     public String toString() {
-        //System.out.println("Account Type  :   " + acctType);
-        //if (this.getClass().equals())
         if ( this instanceof Savings && !(this instanceof Investment)) {
             System.out.println("SAVING");
         } else if ( this instanceof LineOfCredit) {

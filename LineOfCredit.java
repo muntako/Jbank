@@ -5,9 +5,7 @@ import java.util.Calendar;
 import java.util.*;
 
 /**
- * Kelas Abstrak LineOfCredit adalah kelas extends dari Checking Account. Kelas ini adalah
- * salah satu jenis Checking Account khusus yang memberikan Credit Limit untuk penarikan
- * melebihi saldo Saving Account
+ * Kelas Abstrak LineOfCredit adalah kelas extends dari Checking Account.
  * 
  * @author Akhmad Muntako
  * @version 24/03/2016
@@ -36,8 +34,8 @@ public class LineOfCredit extends Checking {
     public void feeAssessment() {
         int days = new GregorianCalendar().get(Calendar.DAY_OF_MONTH);
         double deficit = creditLimit - creditBalance; 
-        double amt = Math.pow(deficit* (1+0.21 / 365),(365*days));
-        monthlyFee = amt - deficit;
+        double amt = Math.pow((1+0.21 / 365),(1*days));
+        monthlyFee = (deficit*amt) - deficit;
     }
     
     /**
@@ -48,11 +46,12 @@ public class LineOfCredit extends Checking {
         if(amount > balance + creditBalance){
             return false;
         }else if (amount > balance){
-            balance = 0;
             creditBalance -= (amount - balance);
+            balance = 0;
+            feeAssessment();
             return true;
         }else{
-            balance = balance - amount;
+            balance -= amount;
             return true;
         }
     }

@@ -2,7 +2,7 @@ import java.util.*;
 /**
  * Write a description of class Investment here.
  * 
- * @author (your name) 
+ * @author Akhmad Muntako 
  * @version (a version number or a date)
  */
 public final class Investment extends Savings
@@ -15,6 +15,9 @@ public final class Investment extends Savings
     public Investment(Customer cust, double amount, int months)
     {
         super(cust, amount);
+        if(amount >= 100){
+            balance = amount;
+        }
         
         if(months >= 6) {
             term = months;

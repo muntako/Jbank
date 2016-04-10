@@ -17,9 +17,9 @@ public class OverDraftProtect extends Checking {
      */
     public OverDraftProtect(Customer cust, double amount, Savings save) {
         super();
-        id = Integer.toString(cust.getCustID());
         balance = amount;
         savingsAccount = save;
+        id = Integer.toString(cust.getCustID());
     }
     
     /**
