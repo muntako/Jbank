@@ -1,4 +1,4 @@
-
+import java.lang.Exception;
 /**
  * A bank account has a balance that can be changed by deposits and withdrawals
  *
@@ -78,12 +78,12 @@ public abstract class Account {
      *
      * @param amount the amount to withdraw
      */
-    public boolean withdraw(double amount) {
-        if (balance - amount < 0) {
-            return false;
+    public void withdraw(double amount) throws AmountOverDrawnException {
+        if (balance - amount < 0) {    
+            throw new AmountOverDrawnException(this);
         } else {
             balance = balance - amount;
-            return true;
+            //return true;
         }
 
     }

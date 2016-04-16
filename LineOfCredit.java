@@ -42,17 +42,18 @@ public class LineOfCredit extends Checking {
      * Method withdraw Menarik sejumlah Saldo dari Line-of-Credit Account
      * @param amount Jumlah Saldo
      */
-    public boolean withdraw (double amount) {
+    public void withdraw (double amount)throws AmountOverDrawnException {
         if(amount > balance + creditBalance){
-            return false;
+            //return false;
+            throw new AmountOverDrawnException(this);
         }else if (amount > balance){
             creditBalance -= (amount - balance);
             balance = 0;
             feeAssessment();
-            return true;
+            //return true;
         }else{
             balance -= amount;
-            return true;
+            //return true;
         }
     }
     

@@ -1,4 +1,4 @@
-
+import java.lang.Exception;
 /**
  * Kelas Customer adalah kelas untuk membuat objek Customer 
  *
@@ -29,6 +29,7 @@ public class Customer {
     private static int[] MAX_NUM_OFCUSTOMERS;
     private Account[] accounts = new Account[4];
     private Account a;
+    private char type;
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -97,7 +98,7 @@ public class Customer {
      *
      * @return accounts
      */
-    public Account getAccount(char type) {
+    public Account getAccount(char type) throws AccountTypeNotFoundException {
         Account acct = null;
         for (Account a: accounts ) {
             switch (type) {
@@ -121,6 +122,8 @@ public class Customer {
                         acct = a;
                     }
                     break;
+                default:
+                    throw new AccountTypeNotFoundException(type);
             }   
         }
         return acct;
@@ -288,7 +291,7 @@ public class Customer {
      * @param balance jumlah saldo akun
      * @param type tipe akun customer
      */
-    public boolean addAccount(Account acct) {
+    public boolean addAccount(Account acct) throws AccountTypeAlreadyExistsException {
         boolean accountAdded = false, sameType = false;
         int index = -1;
         if ( numOfAccounts < 5 ) {
@@ -298,7 +301,17 @@ public class Customer {
                 } else if (accounts[i] != null ) {
                     if (accounts[i].getClass().equals( acct.getClass() )){
                         sameType = true;
-                        break;
+                        
+                        if (acct.getClass().equals("Savings")){
+                            type = 'S';
+                        }else if (acct.getClass().equals("Investment")){
+                            type = 'I';
+                        }else if (acct.getClass().equals("LineOfCredit")){
+                            type = 'L';
+                        }else if (acct.getClass().equals("Overdraft")){
+                            type = 'O';
+                        }
+                        throw new AccountTypeAlreadyExistsException(type) ;
                     }
                 }
             }

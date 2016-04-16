@@ -53,7 +53,7 @@ public final class Investment extends Savings
     }
     
     @Override
-    public boolean withdraw(double amount)
+    public void withdraw(double amount)
     {
         boolean check = false;
         if(amount > balance) {
@@ -69,6 +69,6 @@ public final class Investment extends Savings
             balance = balance - (balance * (20/100)) - amount;
             check = true;
         }
-        return check;
+        //return check;
     }
 }

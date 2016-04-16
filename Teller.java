@@ -19,6 +19,7 @@ import java. io.*;
  * @version 17/3/2016
  */
 public class Teller {
+    private Exception AmountOverDrawnException;
 
     //declaration variable
 //     public Customer cus = new Customer();
@@ -31,14 +32,21 @@ public class Teller {
 //     private MathContext mc = new MathContext(8), mc1 = new MathContext(3);
     private Customer[] customers;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws AmountOverDrawnException {
+       Customer c = new Customer("Akhmad","Muntako", null);
+       Savings s = new Savings(c,500);
+       s.withdraw(600);
+       throw new AmountOverDrawnException(s);
+        
+        
         //modul 6
+       /* 
         Customer c = new Customer("Akhmad","Muntako", null);
         Savings s = new Savings(c,500);
         s.addDailyInterest(280);
         Investment i = new Investment(c, 1000, 12);
         i.addDailyInterest(280);
-        OverDraftProtect o = new OverDraftProtect(c, 1500, s);
+        OverDraftProtect o = new OverDraftProtect(c, 1500, s);withdraw
         LineOfCredit l = new LineOfCredit (c, 3000, 1000);
         c.addAccount(s);
         c.addAccount(i);
@@ -51,9 +59,12 @@ public class Teller {
         o.withdraw(800);
         l.withdraw(2000);
         l.withdraw(2000);
-        c.printAllAccounts();
+        c.printAllAccounts();*/
     }
     
+    public static void atmgui(){
+        ATMGUI atm = new ATMGUI();
+    }
       
     
     /*

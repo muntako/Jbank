@@ -26,13 +26,14 @@ public class Savings extends Account {
         return interestEarned;
     }
 
-    public boolean withdraw(double amount) {
-        boolean chk = false;
+    public void withdraw(double amount)throws AmountOverDrawnException {
+        //boolean chk = false;
         if (balance - amount >= 10) {
             balance = balance - amount;
-            chk = true;
+            //chk = true;
         }
-        return chk;
+        //return chk;
+        throw new AmountOverDrawnException(this);
     }
 
     public void addDailyInterest(int days) {

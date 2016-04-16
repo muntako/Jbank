@@ -12,10 +12,11 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import java.io.*;
 import java.util.Scanner;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
 public class ATMGUI extends JFrame {
 
-    private JMenuBar menuBar;
     private JButton depositbt;
     private JButton withdrawbt;
     private JButton exitbt;
@@ -31,9 +32,11 @@ public class ATMGUI extends JFrame {
     private JTextField textfield2;
     private JScrollPane scroll;
     private WindowHandler wh = new WindowHandler();
-    private String ID, Text;
+    private String Text;
+    private int ID;
     private long saldo;
     private long Nominal;
+    private Customer customer;
     
 
     //Constructor 
@@ -47,10 +50,12 @@ public class ATMGUI extends JFrame {
         totalbt = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
+        
         savingbt = new JRadioButton();
         investbt = new JRadioButton();
         creditbt = new JRadioButton();
         overbt = new JRadioButton();
+        
         textarea1 = new JTextArea();
         textfield1 = new JTextField();
         textfield2 = new JTextField();
@@ -90,55 +95,14 @@ public class ATMGUI extends JFrame {
         label2.setForeground(hitam);
         label2.setText("Enter amount here:");
         buildGUI();
-        addWindowListener(wh); 
-        saldo = 500000000;
+        addWindowListener(wh);        
         
-            depositbt.addActionListener(new ActionListener()
-            {
-              public void actionPerformed(ActionEvent e)
-              {
-                // menampilkan teks pada teks area 
-                ID = textfield1.getText();
-                Nominal = Long.parseLong(textfield2.getText());
-                textarea1.append("\n"+ ID +" saves an amount of money: Rp " + Nominal);
-                textfield2.setText("");
-                saldo += Nominal;
-               }
-            });
-            withdrawbt.addActionListener(new ActionListener()
-            {
-              public void actionPerformed(ActionEvent e)
-              {
-                // menampilkan teks pada teks area
-                ID = textfield1.getText();
-                Nominal = Long.parseLong(textfield2.getText());
-                textarea1.append("\n"+ ID +" withdraw an amount of money: Rp " + Nominal);
-                textfield2.setText("");
-                saldo -= Nominal;
-             }
-            });
-            totalbt.addActionListener(new ActionListener()
-            {
-              public void actionPerformed(ActionEvent e)
-              {
-                // menampilkan teks pada teks area
-                textarea1.append("\n"+ " Total of money: Rp " + saldo);
-                
-             }
-            });
-            exitbt.addActionListener(new ActionListener()
-            {
-              public void actionPerformed(ActionEvent e)
-              {
-                int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to close?", "Close?",  JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION)
-                {
-                   JOptionPane.showMessageDialog(null,"You are exitting, goodbye","exit",JOptionPane.INFORMATION_MESSAGE);
-                   System.exit(0);
-                }
-             }
-            });
-            
+        depositbt.addActionListener(new ButtonHandler(this));
+        withdrawbt.addActionListener(new ButtonHandler(this));
+        totalbt.addActionListener(new ButtonHandler(this));
+        exitbt.addActionListener(new ButtonHandler(this));
+        
+
     }
 
    
@@ -207,7 +171,7 @@ public class ATMGUI extends JFrame {
         g.fill = GridBagConstraints.HORIZONTAL;
         g.gridx = 0;
         g.gridy = 1;
-        g.ipady = 250;
+        g.ipady = 300;
         g.gridwidth = 4;
         panel.add(scroll,g);
         
@@ -234,28 +198,18 @@ public class ATMGUI extends JFrame {
        
     }
     
-    /**
-     * class window handler berfungsi untuk menampilkan pesan saat window ditutup
-     */
-    class WindowHandler extends WindowAdapter
-    {
-      public void windowClosing(WindowEvent e)
-      {
-            JOptionPane.showMessageDialog(null,"You are exitting, goodbye","exit",JOptionPane.INFORMATION_MESSAGE);
-            System.exit(0);
-      }
-    }
-    
-    public String getIdField (){
+    public int getID (){
+        ID = Integer.parseInt(textfield1.getText());
         return ID;
     }
     
-    public double getNominalField (){
+    public long getNominal(){
+       Nominal = Long.parseLong(textfield2.getText());
        return Nominal;
     }
     
-    public String getTextArea (){
-         return Text;
+    public  void setTextArea (String str){
+         textarea1.append(str);
     }
    
 }
