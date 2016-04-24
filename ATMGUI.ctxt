@@ -13,4 +13,6 @@ comment5.params=
 comment5.target=long\ getNominal()
 comment6.params=str
 comment6.target=void\ setTextArea(java.lang.String)
-numComments=7
+comment7.params=
+comment7.target=char\ getAcctType()
+numComments=8

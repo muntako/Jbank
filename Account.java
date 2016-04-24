@@ -11,33 +11,23 @@ public abstract class Account {
     //private char acctType; //tipe akun
     protected double balance; //
     public String id;  //id akun
-    Customer customer = new Customer();
+    //Customer customer = new Customer();
 
-    /*
-     * Construct a bank accout with a given account type and account amount
-     * 
-     * @param type the acount type 
-     * @param amount the amount account
-     
-     public Account(char type, double amount)
-     {
-     acctType = type;
-     balance = amount ;
-     }*/
-    /**
+        /**
      * Construct a bank accout with a given Customer, account type and account
      * amount
      *
      * @param type the acount type
      * @param amount the amount account
      */
-//    public Account(Customer customer, double amount,char type)
-//     {
-//        customer = customer;
-//        acctType = type;
-//        balance = amount ;
-//        String ID =  customer.getCustomerId() + ""+ type;
-//     } 
+    /*
+   public Account(Customer customer, double amount,char type)
+    {
+       customer = customer;
+       acctType = type;
+       balance = amount ;
+       String ID =  customer.getCustomerId() + ""+ type;
+    } */
 
     public String toString() {
         if ( this instanceof Savings && !(this instanceof Investment)) {

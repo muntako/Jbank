@@ -10,7 +10,11 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java. io.*;
+import java.io.*;
+import java.util.*;
+import java.util.ArrayList;
+import java.io.IOException;
+import java.io.NotSerializableException;
 
 /**
  * Teller Class
@@ -18,22 +22,94 @@ import java. io.*;
  * @author Akhmad Muntako
  * @version 17/3/2016
  */
-public class Teller {
-    private Exception AmountOverDrawnException;
 
-    //declaration variable
+public class Teller implements Serializable {
+     //declaration variable
 //     public Customer cus = new Customer();
 //     public Account a1 = new Account();
 //     private Account akun1;
 //     public String blabla;
 //     public double saldo, balance;
 //     public Customer newCustomer = new Customer();
-//     public int Round_Unnecessary;
 //     private MathContext mc = new MathContext(8), mc1 = new MathContext(3);
-    private Customer[] customers;
 
-    public static void main(String[] args) throws AmountOverDrawnException {
-       Customer c = new Customer("Akhmad","Muntako", null);
+    private Exception AmountOverDrawnException;
+    //private ArrayList<Customer> customers = new ArrayList();
+    private Customer customer;
+    private int custID;
+    private SortedSet<Customer> customers = new TreeSet();   
+    private static CustomerFileReader customerFileReader = new CustomerFileReader();
+   
+    /**
+     * Construct the Teller object
+     */
+    public Teller() throws IOException, ClassNotFoundException{
+        CustomerFileReader reader = new CustomerFileReader();
+        }
+        
+    public void createNewCustomer(Customer cust){
+        customers.add(cust);
+        CustomerFileWriter writer = new CustomerFileWriter();
+        //ArrayList<Customer> list = new TreeSet(customers);
+        writer.saveCustomer(customers);
+    }
+    
+    public Customer getCustomer(int id){
+        Customer cust = null;
+        Iterator<Customer> itr = customers.iterator();
+        while(itr.hasNext()) {
+            cust = itr.next();
+            if(cust.getCustID() == id) {
+                System.out.println(cust.getCustID());
+                return cust;
+            }
+            else {
+                cust = null;
+            }
+        }
+        return cust;
+    }
+
+    public static void main(String[] args)throws IOException, ClassNotFoundException{
+       Teller teller = new Teller();
+        Customer c = new Customer("Akhmad", "Muntako", null);
+        teller.createNewCustomer(c);
+        ArrayList<Customer> List = new ArrayList();
+        
+        SortedSet<Customer> customers = new TreeSet(List);
+
+            customers = new TreeSet(customerFileReader.readCustomer());
+            Iterator<Customer> itr = customers.iterator();
+            Customer customerCheck;
+                       
+            while(itr.hasNext()) {
+                customerCheck = itr.next();
+                System.out.println(customerCheck.getCustID());
+            }
+
+       /* 
+        do {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Enter customer ID (Enter 0 to exit): ");
+            int id = scan.nextInt();
+            CustomerFileReader reader = new CustomerFileReader();
+            reader.readCustomer();        
+            Customer found = teller.getCustomer(id);
+            if(id == 0) {
+                System.exit(0);
+            }
+            else if(found == null) {
+                System.out.println("Customer not found");
+            }
+            else {
+                System.out.println("Customer found");
+            }
+        } while(true);      
+        
+       //customers.readCustomer();
+       /*
+        * modul 8
+        Customer c = new Customer("Akhmad","Muntako", null);
        Savings s = new Savings(c,500);
        s.withdraw(600);
        throw new AmountOverDrawnException(s);
@@ -208,12 +284,7 @@ public class Teller {
         //System.out.println("#############################################");
     }
 */
-    /**
-     * Construct the Teller object
-     */
-    public Teller() {
-
-    }
+    
 }
 
 /*public static void main() 

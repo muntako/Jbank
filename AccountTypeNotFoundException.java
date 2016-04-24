@@ -25,7 +25,7 @@ public class AccountTypeNotFoundException extends Exception
             case 'S' : return "Savings "+super.getMessage();
             case 'I' : return "Investmet "+super.getMessage();
             case 'O' : return "Overdraft Protection "+super.getMessage();
-            case 'C' : return "Line-Of-Credit "+super.getMessage();
+            case 'L' : return "Line-Of-Credit "+super.getMessage();
         }
         return "";
     }    

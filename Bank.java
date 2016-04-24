@@ -28,15 +28,15 @@ public class Bank {
     public static String website;
     public static String BANK_NAME = "JBANK";
     public static String BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
-    private static int MAX_NUM_OF_CUSTOMERS;
+    private static int MAX_NUM_OF_CUSTOMERS = 20;
     private static Customer[] customers = new Customer[MAX_NUM_OF_CUSTOMERS];
 
-    static {
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Masukkan jumlah maksimum Customers:");
-        int x = reader.nextInt();
-        MAX_NUM_OF_CUSTOMERS = x;
-    }
+//     static {
+//         Scanner reader = new Scanner(System.in);
+//         System.out.println("Masukkan jumlah maksimum Customers:");
+//         int x = reader.nextInt();
+//         MAX_NUM_OF_CUSTOMERS = x;
+//     }
 
     /**
      * Construct bank object

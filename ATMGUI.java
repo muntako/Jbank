@@ -37,6 +37,7 @@ public class ATMGUI extends JFrame {
     private long saldo;
     private long Nominal;
     private Customer customer;
+    private ButtonGroup radiogrup;
     
 
     //Constructor 
@@ -123,10 +124,12 @@ public class ATMGUI extends JFrame {
         buttongroup.setLayout(new GridLayout(4,1));
         
         //menambahkan komponen ke panel
+        //radiogrup = new ButtonGroup();
         radiogrup.add(savingbt);
         radiogrup.add(investbt);
         radiogrup.add(creditbt);
         radiogrup.add(overbt);
+        
         infoPanel.add(label2);
         infoPanel.add(textfield2);
         
@@ -210,6 +213,10 @@ public class ATMGUI extends JFrame {
     
     public  void setTextArea (String str){
          textarea1.append(str);
+    }
+    public char getAcctType()
+    {
+        return radiogrup.getSelection().getActionCommand().charAt(0);
     }
    
 }

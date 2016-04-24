@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=java.lang.String\ toString()
-comment0.text=\r\n\ Construct\ a\ bank\ accout\ with\ a\ given\ Customer,\ account\ type\ and\ account\r\n\ amount\r\n\r\n\ @param\ type\ the\ acount\ type\r\n\ @param\ amount\ the\ amount\ account\r\n
+comment0.text=\r\n\ \ \ public\ Account(Customer\ customer,\ double\ amount,char\ type)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ customer\ \=\ customer;\r\n\ \ \ \ \ \ \ acctType\ \=\ type;\r\n\ \ \ \ \ \ \ balance\ \=\ amount\ ;\r\n\ \ \ \ \ \ \ String\ ID\ \=\ \ customer.getCustomerId()\ +\ ""+\ type;\r\n}
 comment1.params=amount
 comment1.target=boolean\ deposit(double)
 comment1.text=\r\n\ Deposits\ money\ into\ the\ bank\ account\r\n\r\n\ @param\ amount\ the\ amount\ to\ deposit\r\n\ @return\r\n

@@ -10,27 +10,27 @@ import java.awt.*;
  * @version (a version number or a date)
  */
 public class ButtonHandler implements  ActionListener{
-    private ATMGUI atm;
+    private ATMGUI gui;
     private int ID;
     private long Nominal,saldo;
     public ButtonHandler(ATMGUI atmgui){
-         atm = atmgui;
+         gui = atmgui;
     }
     
     public void actionPerformed(ActionEvent e){
-        ID = atm.getID();
-        Nominal = atm.getNominal();
+        ID = gui.getID();
+        Nominal = gui.getNominal();
        if(e.getActionCommand().equals("Deposit")){
-           atm.setTextArea("\nCustomer: " + atm.getID() +" saves an amount of money: Rp " + atm.getNominal() );
-           saldo += atm.getNominal();
+           gui.setTextArea("\nCustomer: " + gui.getID() +" saves an amount of money: Rp " + gui.getNominal() );
+           saldo += gui.getNominal();
        }else if(e.getActionCommand().equals("Withdraw")){
-           if (atm.getNominal()>saldo){
+           if (gui.getNominal()>saldo){
                JOptionPane.showMessageDialog(null,"transtraction error, saldo not enough","alert",JOptionPane.INFORMATION_MESSAGE);
             }
-           atm.setTextArea("\nCustomer: " + atm.getID() +" withdraws an amount of money: Rp " + atm.getNominal());
-           saldo -= atm.getNominal();
+           gui.setTextArea("\nCustomer: " + gui.getID() +" withdraws an amount of money: Rp " + gui.getNominal());
+           saldo -= gui.getNominal();
        }else if(e.getActionCommand().equals("Total")){
-           atm.setTextArea("\nTotal of Moneys: Rp" + saldo);
+           gui.setTextArea("\nTotal of Moneys: Rp" + saldo);
        }else if(e.getActionCommand().equals("Exit")){
            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to close?", "Close?",  JOptionPane.YES_NO_OPTION);
            if (reply == JOptionPane.YES_OPTION)
@@ -40,5 +40,24 @@ public class ButtonHandler implements  ActionListener{
            }
         }
    }
+   
+   public Account locateAccount()
+    {
+        Account a = null;
+        Customer c = null;
+        try {
+            c = Bank.getCustomer(gui.getID());
+            try {
+                a = c.getAccount(gui.getAcctType());
+            } catch (AccountTypeNotFoundException notfound) {
+                gui.setTextArea(notfound.getMessage());
+            }
+        } catch (NullPointerException e) {
+            gui.setTextArea("Customer ID does not exist");
+        }
+        return a;
+    }
+    
+   
 }
 

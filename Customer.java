@@ -12,7 +12,7 @@ import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
 
     // instance variables 
     private String cityAddress;
@@ -23,7 +23,7 @@ public class Customer {
     public String streetAddress;
     public static String phoneNumber;
     private String zipOrPostalCode;
-    public static int custId;
+    public  static int custId;
     private int indexArrayAccount = 0;
     private int numOfAccounts;
     private static int[] MAX_NUM_OFCUSTOMERS;
@@ -84,6 +84,7 @@ public class Customer {
         custId = Bank.getNextID();
     }
 
+    
     /**
      * method untuk mendapatkan alamat customer dengan mengembalikan nilai nama jalan, nama kota, kode pos
      *
@@ -92,7 +93,12 @@ public class Customer {
     public String getAddress() {
         return streetAddress + "," + cityAddress + "," + zipOrPostalCode;
     }
-
+    
+    @Override
+    public int compareTo(Customer other){
+        return Integer.compare(this.custId, other.custId);
+    }
+    
     /**
      * method untuk mendapatkan nomor ID dan type account dari objek customer
      *
